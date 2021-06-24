@@ -2,6 +2,16 @@ const express = require('express')
 const app = express()
 const port = process.env.PORT || 3000
 
+var heuristicas = [
+  120, -20, 20, 5, 5, 20, -20, 120,
+  -20, -40, -5, -5, -5, -5, -40, -20,
+  20, -5, 15, 3, 3, 15, -5, 20,
+  5, -5, 3, 3, 3, 3, -5, 5,
+  5, -5, 3, 3, 3, 3, -5, 5,
+  20, -5, 15, 3, 3, 15, -5, 20,
+  -20, -40, -5, -5, -5, -5, -40, -20,
+  120, -20, 20, 5, 5, 20, -20, 120,
+];
 
 app.get('/', (req, res) => {
   turno = req.query.turno;
@@ -155,4 +165,12 @@ function llenandoMovimientos(tablero, arr, jug) {
     }
   }
   return newTablero;
+}
+
+function getX(pos) { 
+  return pos % 8; 
+
+}
+function getY(pos) { 
+  return Math.floor(pos / 8); 
 }
